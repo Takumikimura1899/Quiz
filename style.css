@@ -10,3 +10,9 @@ h2,
 h3 {
   font-family: '游ゴシック体', 'YuGothic', '游ゴシック', 'Yu Gothic', sans-serif;
 }
+
+/* emはフォントサイズで変わるので絶対固定したい大きさはpx それ以外はem,rem */
+ul li,
+ol li {
+  padding: 1em 0;
+}
