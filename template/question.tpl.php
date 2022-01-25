@@ -17,7 +17,7 @@
 
         <div class="section">
             <h2>問題1</h2>
-            <p>HTMLはなんの略称？</p>
+            <p><?php echo $question; ?></p>
 
             <h3>選択肢</h3>
             <ol class="answers" data-id="question1">
