@@ -3,12 +3,12 @@ const answersList = document.querySelectorAll('ol.answers li');
 answersList.forEach((li) => li.addEventListener('click', checkClickedAnswer));
 
 const correctAnswers = {
-  question1: 'B',
-  question2: 'A',
-  question3: 'B',
-  question4: 'C',
-  question5: 'D',
-  question6: 'B',
+  1: 'B',
+  2: 'A',
+  3: 'B',
+  4: 'C',
+  5: 'D',
+  6: 'B',
 };
 
 function checkClickedAnswer(event) {

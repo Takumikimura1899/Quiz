@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css" type="text/css" />
     <script src="questions.js" defer></script>
 
-    <title>問題1 | Quiz!</title>
+    <title>問題<?php echo $id; ?> | Quiz!</title>
 </head>
 
 <body>
@@ -16,11 +16,11 @@
         <h1>Quiz!</h1>
 
         <div class="section">
-            <h2>問題1</h2>
+            <h2>問題<?php echo $id; ?></h2>
             <p><?php echo $question; ?></p>
 
             <h3>選択肢</h3>
-            <ol class="answers" data-id="question1">
+            <ol class="answers" data-id="<?php echo $id; ?>">
                 <li data-answer="A">HyperTextMakingLanguage</li>
                 <li data-answer="B">HyperTextMarkupLanguage</li>
                 <li data-answer="C">HonmaniTensaitekinaMajidesugoiLanguage</li>
