@@ -6,7 +6,7 @@ $id = "1";
 
 $data = fetchById($id);
 
-$question = $data[1];
+$question = nl2br($data[1]);
 
 // <li data-answer="A">HyperTextMakingLanguage</li>
 // <li data-answer="B">HyperTextMarkupLanguage</li>
@@ -26,6 +26,6 @@ $answers = [
 
 $correctAnswer = strtoupper($data[6]);
 $correctAnswerValue = $answers[$correctAnswer];
-$explanation = $data[7];
+$explanation = nl2br($data[7]);
 
 include __DIR__ . "/../template/question.tpl.php";
