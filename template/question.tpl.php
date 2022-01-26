@@ -21,18 +21,17 @@
 
             <h3>選択肢</h3>
             <ol class="answers" data-id="<?php echo $id; ?>">
-                <li data-answer="A">HyperTextMakingLanguage</li>
-                <li data-answer="B">HyperTextMarkupLanguage</li>
-                <li data-answer="C">HonmaniTensaitekinaMajidesugoiLanguage</li>
-                <li data-answer="D">そもそも略称ではない</li>
-            </ol>
+                <?php foreach ($answers as $key => $value): ?>
+                <li data-answer="<?php echo $key; ?>"> <?php echo $value; ?> </li>
+                <?php endforeach; ?>
         </div>
 
         <div id="section-correct-answer" class="section">
             <h2>答え</h2>
             <p>
-                <span id="correct-answer">B. HyperTextMarkupLanguage</span><br />
-                これが間違えてたら「HTMLとは？」の動画を復習お願いします！
+                <span id="correct-answer"> <?php echo $correctAnswer; ?>. <?php echo $correctAnswerValue; ?>
+                </span><br />
+                <?php echo $explanation; ?>
             </p>
         </div>
 
