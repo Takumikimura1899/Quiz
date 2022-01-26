@@ -1,6 +1,11 @@
 <?php
 
+require __DIR__ . "/../lib/functions.php";
+
 $id = "1";
+
+$data = fetchById($id);
+var_dump($data);
 
 $question = "HTMLはなんの略称？";
 
