@@ -2,9 +2,13 @@
 
 require __DIR__ . "/../lib/functions.php";
 
-$id = "1";
+$id = escape($_GET["id"]);
 
 $data = fetchById($id);
+
+if (!$data) {
+    exit(0);
+}
 
 $formattedData = generateFormattedData($data);
 
