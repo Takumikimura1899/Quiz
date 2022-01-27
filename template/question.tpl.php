@@ -33,6 +33,11 @@
                 </span><br />
                 <?php echo $explanation; ?>
             </p>
+            <form method="POST" action="answer.php">
+                <p>ID: <br><input name='id' type="text" value="1"></p>
+                <p>選んだ答え: <br><input name="selectAnswer" type="text"></p>
+                <p><input type="submit" value="送信"></p>
+            </form>
         </div>
 
         <div class="section">
