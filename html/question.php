@@ -7,6 +7,7 @@ $id = escape($_GET["id"]);
 $data = fetchById($id);
 
 if (!$data) {
+    include __DIR__ . "/../template/404.tpl.php";
     exit(0);
 }
 
