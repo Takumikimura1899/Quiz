@@ -47,3 +47,30 @@ function isDataRow(array $row)
 
     return true;
 }
+
+function generateFormattedData($data)
+{
+    $formattedData = [
+        "id" => escape($data[0]),
+        "question" => escape($data[1], true),
+        "answers" => [
+            "A" => escape($data[2]),
+            "B" => escape($data[3]),
+            "C" => escape($data[4]),
+            "D" => escape($data[5]),
+        ],
+        "correctAnswer" => escape(strtoupper($data[6])),
+        "explanation" => escape($data[7], true),
+    ];
+    return $formattedData;
+}
+
+function escape($data, $nl2br = false)
+{
+    $convertedData = htmlspecialchars($data, ENT_HTML5);
+
+    if ($nl2br) {
+        return nl2br($convertedData);
+    }
+    return $convertedData;
+}
