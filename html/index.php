@@ -8,11 +8,13 @@ if (!$datalist) {
     error404();
 }
 
-$formattedData = generateFormattedData($data);
+$questions = [];
+foreach ($datalist as $data) {
+    $questions[] = generateFormattedData($data);
+}
 
 $assignData = [
-    'id' => $formattedData['id'],
-    'question' => $formattedData['question'],
-    'answers' => $formattedData['answers'],
+    'questions' => $questions,
 ];
+
 loadTemplate('index', $assignData);
