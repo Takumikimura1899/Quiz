@@ -2,23 +2,12 @@ const answersList = document.querySelectorAll('ol.answers li');
 
 answersList.forEach((li) => li.addEventListener('click', checkClickedAnswer));
 
-const correctAnswers = {
-  1: 'B',
-  2: 'A',
-  3: 'B',
-  4: 'C',
-  5: 'D',
-  6: 'B',
-};
-
 function checkClickedAnswer(event) {
   const clickedAnswerElement = event.currentTarget;
   console.log(clickedAnswerElement.dataset.answer);
   const selectedAnswer = clickedAnswerElement.dataset.answer;
 
   const questionId = clickedAnswerElement.closest('ol.answers').dataset.id;
-
-  const correctAnswer = correctAnswers[questionId];
 
   // フォームデータの入れ物を作る
   const formData = new FormData();
@@ -36,10 +25,23 @@ function checkClickedAnswer(event) {
   // フォームデータを送信
   xhr.send(formData);
 
-  const result = selectedAnswer === correctAnswer;
+  // loadendはリクエストが完了したときにイベントが発生する
+  xhr.addEventListener('loadend', (event) => {
+    /** @type {XMLHttpRequest} */
+    const xhr = event.currentTarget;
 
-  // 画面表示
-  displayResult(result);
+    // リクエストが成功したかステータスコードで確認
+    if (xhr.status === 200) {
+      const response = JSON.parse(xhr.response);
+      const result = response.result;
+
+      // 画面表示
+      displayResult(result);
+    } else {
+      // エラー
+      alert('Error: 回答データの取得に失敗しました');
+    }
+  });
 }
 
 function displayResult(result) {
