@@ -19,13 +19,21 @@ function checkClickedAnswer(event) {
   const questionId = clickedAnswerElement.closest('ol.answers').dataset.id;
 
   const correctAnswer = correctAnswers[questionId];
+
+  const result = selectedAnswer === correctAnswer;
+
+  // 画面表示
+  displayResult(result);
+}
+
+function displayResult(result) {
   //  メッセージを入れる変数を用意
   let message;
   // カラーコードを入れる変数を用意
   let answerColorCode;
 
   // 答えが正しいか判定
-  if (selectedAnswer === correctAnswer) {
+  if (result) {
     // 正しい答えだった時
     message = '正解です!おめでとう!';
     answerColorCode = '';
