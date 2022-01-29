@@ -20,6 +20,22 @@ function checkClickedAnswer(event) {
 
   const correctAnswer = correctAnswers[questionId];
 
+  // フォームデータの入れ物を作る
+  const formData = new FormData();
+
+  // 送信したい値を追加
+  formData.append('id', questionId);
+  formData.append('selectedAnswer', selectedAnswer);
+
+  // xhrはXMLHttpRequestの頭文字
+  const xhr = new XMLHttpRequest();
+
+  // HTTPメソッドをPOSTに指定、送信するURLを指定
+  xhr.open('POST', 'answer.php');
+
+  // フォームデータを送信
+  xhr.send(formData);
+
   const result = selectedAnswer === correctAnswer;
 
   // 画面表示
