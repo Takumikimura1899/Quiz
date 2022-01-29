@@ -33,10 +33,15 @@ function checkClickedAnswer(event) {
     // リクエストが成功したかステータスコードで確認
     if (xhr.status === 200) {
       const response = JSON.parse(xhr.response);
+
+      // 答えが正しいか判定
       const result = response.result;
+      const correctAnswer = response.correctAnswer;
+      const correctAnswerValue = response.correctAnswerValue;
+      const explanation = response.explanation;
 
       // 画面表示
-      displayResult(result);
+      displayResult(result, correctAnswer, correctAnswerValue, explanation);
     } else {
       // エラー
       alert('Error: 回答データの取得に失敗しました');
@@ -44,7 +49,7 @@ function checkClickedAnswer(event) {
   });
 }
 
-function displayResult(result) {
+function displayResult(result, correctAnswer, correctAnswerValue, explanation) {
   //  メッセージを入れる変数を用意
   let message;
   // カラーコードを入れる変数を用意
@@ -62,6 +67,12 @@ function displayResult(result) {
   }
 
   alert(message);
+
+  // 正解の内容をHTMLに組み込む
+  document.querySelector(
+    'span#correct-answer'
+  ).innerHTML = `${correctAnswer}.${correctAnswerValue}`;
+  document.querySelector('span#explanation').innerHTML = explanation;
 
   // 色を変更
   document.querySelector('span#correct-answer').style.color = answerColorCode;
